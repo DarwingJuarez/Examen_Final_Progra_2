@@ -1,0 +1,31 @@
+create database if not exists examenfinal;
+use  examenfinal;
+
+
+create table if not exists inventario
+(
+	idinventario int primary key auto_increment not null,
+    fecha_inicio date null,
+    fecha_fin date null,
+    stock_inicial int null,
+    entradas int null,
+    salidas int null,
+    total int null,
+    prod_idproducto int not null
+    
+    ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+);
+create table if not exists producto
+(
+	idproducto int primary key not null,
+    descripcion varchar(45)
+);
+
+ALTER TABLE inventario
+ADD CONSTRAINT fk_inventario_producto
+FOREIGN KEY (prod_idproducto) REFERENCES producto(idproducto);
+
+
+select * from inventario;
+select * from producto;
